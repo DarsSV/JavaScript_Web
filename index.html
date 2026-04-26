@@ -1,0 +1,116 @@
+<body>
+    <div id="main-banner" style="background-color: lightblue; padding: 20px; border: 1px solid #000; width: 80%; margin: 20px auto;">
+        
+        <div id="banner-content" style="background-color: #ffffcc; padding: 15px; border: 1px solid #333; margin-bottom: 20px;">
+            <h2>Hi there! I'm [Your Name]</h2>
+            <p>Things I want to explore in my lifetime:</p>
+            <ul id="exploration-list">
+                <li>Travel to Japan</li>
+                <li>Learn Cloud Computing</li>
+                <li>Master Piano</li>
+            </ul>
+        </div>
+
+        <div id="verse-container" class="default-style" style="margin-bottom: 20px;">
+            <h1 id="reference">Deuteronomy 31:6</h1>
+            <p id="verse-text">
+                "Be strong and courageous. Do not fear or be in dread of them, 
+                for it is the Lord your God who goes with you. He will not leave 
+                you or forsake you."
+            </p>
+        </div>
+
+        <div id="login-section" style="background-color: #fff; padding: 20px; border: 1px solid #ccc; margin-bottom: 20px;">
+            <div style="margin-bottom: 10px;">
+                <label style="display: block; font-size: 1.2rem; margin-bottom: 5px;">Username:</label>
+                <input type="text" id="username-field" style="width: 100%; padding: 10px; font-size: 1.2rem; border: 1px solid #333;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; font-size: 1.2rem; margin-bottom: 5px;">Password:</label>
+                <input type="password" id="password-field" style="width: 100%; padding: 10px; font-size: 1.2rem; border: 1px solid #333;">
+            </div>
+            <button id="submit-btn" style="width: 100%; padding: 15px; font-size: 1.5rem; cursor: pointer;">Submit</button>
+        </div>
+
+        <div style="margin-top: 20px; border-top: 1px dashed #666; padding-top: 15px;">
+            <label for="new-item-input"><b>Add New Item to List:</b></label>
+            <input type="text" id="new-item-input" placeholder="Enter hobby/goal...">
+            
+            <div style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 10px;">
+                <button id="add-btn" style="padding: 10px;">Add to list</button>
+                <button id="font-btn" style="padding: 10px;">Change font family</button>
+                <button id="bold-btn" style="padding: 10px;">Make items bold</button>
+                <button id="add-design-btn" style="padding: 10px; background-color: #d4af37;">Add Verse Design</button>
+                <button id="remove-design-btn" style="padding: 10px;">Remove Design</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .default-style {
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            transition: all 0.5s ease;
+        }
+
+        .biblical-theme {
+            background: linear-gradient(135deg, #2c5364, #203a43, #0f2027) !important;
+            color: #f3e5ab !important;
+            border: 5px double #d4af37 !important;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .biblical-theme h1 { font-family: 'Georgia', serif; font-style: italic; }
+    </style>
+
+    <script>
+        /** * 1. USERNAME & PASSWORD LOGIC 
+         * Captures input and displays in the console (F12)
+         */
+        document.getElementById('submit-btn').addEventListener('click', function() {
+            const user = document.getElementById('username-field').value;
+            const pass = document.getElementById('password-field').value;
+            
+            console.log("Username: " + user);
+            console.log("Password: " + pass);
+            
+            alert("Credentials sent to console!");
+        });
+
+        /** * 2. EXPLORATION LIST LOGIC 
+         */
+        const list = document.getElementById('exploration-list');
+        const inputField = document.getElementById('new-item-input');
+
+        document.getElementById('add-btn').addEventListener('click', function() {
+            const text = inputField.value;
+            if (text.trim() !== "") {
+                const li = document.createElement('li');
+                li.textContent = text;
+                list.appendChild(li);
+                inputField.value = ""; 
+            }
+        });
+
+        document.getElementById('font-btn').addEventListener('click', function() {
+            list.style.fontFamily = (list.style.fontFamily === "serif") ? "sans-serif" : "serif";
+        });
+
+        document.getElementById('bold-btn').addEventListener('click', function() {
+            list.style.fontWeight = (list.style.fontWeight === "bold") ? "normal" : "bold";
+        });
+
+        /** * 3. BIBLE VERSE DESIGN LOGIC 
+         */
+        const verseContainer = document.getElementById('verse-container');
+        document.getElementById('add-design-btn').addEventListener('click', function() {
+            verseContainer.classList.add('biblical-theme');
+        });
+
+        document.getElementById('remove-design-btn').addEventListener('click', function() {
+            verseContainer.classList.remove('biblical-theme');
+        });
+    </script>
+</body>
